@@ -34,3 +34,22 @@ def AddPerson(firstname, lastname, phone, db="contact_book"):
     cursor.execute(sql)
     connection.commit()
     print(f"{firstname} was sucessfully added to your conatct book.")
+
+
+def GetAllItems(db="contact_book"):
+    connection = sqlite3.connect(db + ".db")
+    cursor = connection.cursor()
+
+    # SQL-Request
+    sql = "SELECT * FROM contacts"
+
+    # Send of an SQL request
+    # getting the Data
+    cursor.execute(sql)
+
+    # return the results
+    for dsatz in cursor:
+        print(dsatz[0], dsatz[1], dsatz[2])
+
+    # cut the connection
+    connection.close()
