@@ -1,4 +1,3 @@
-from Database import Database
+from Database import AddPerson, CreateDatabase
 
-
-Database.AddPerson(firstname="Max", lastname="Heinrich", phone=455454, db="Test")
+AddPerson(firstname="Max", lastname="Heinrich", phone=int(455454))
