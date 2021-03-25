@@ -51,5 +51,5 @@ def GetAllItems(db="contact_book"):
     for dsatz in cursor:
         print(dsatz[0], dsatz[1], dsatz[2])
 
-    # cut the connection
+    # close the connection
     connection.close()
