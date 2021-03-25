@@ -1,7 +1,9 @@
 from Database import AddPerson, CreateDatabase, GetAllItems
+from security import check_name
 import phonenumbers
 
 database = "contact_book"
+
 
 # add a person, with verfication
 def add_peron():
@@ -25,7 +27,9 @@ def add_peron():
 
     print("")
     print("Data that is submitted:")
-    print(f"Firstname: {firstname} | Lastname: {lastname} | Phonenumber: {phone}")
+    print(
+        f"Firstname: {firstname} | Lastname: {lastname} | Phonenumber: {phone}"
+    )
     print("")
     print("yes or no")
 
@@ -40,3 +44,7 @@ def add_peron():
             else:
                 print("Okay, we will send you back to the beginning")
                 add_peron()
+
+
+name = check_name("hello")
+print(name)
