@@ -1,3 +1,4 @@
+import os
 from Database import AddPerson, CreateDatabase, GetAllItems
 from security import check_name
 import phonenumbers
@@ -54,4 +55,19 @@ def add_peron():
                 add_peron()
 
 
-add_peron()
+def get_all():
+    GetAllItems()
+    user_in = input("Type any key to continue")
+    os.system("cls")
+
+
+while True:
+    user_in = input(
+        "What do you want to do?\n 1: Add a contact\n 2: Gett all contacts\n")
+
+    if user_in == '1':
+        os.system("cls")
+        add_peron()
+    elif user_in == '2':
+        os.system("cls")
+        get_all()
