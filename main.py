@@ -1,7 +1,9 @@
 from Database import AddPerson, CreateDatabase, GetAllItems
 import phonenumbers
 
+database = "contact_book"
 
+# add a person, with verfication
 def add_peron():
     firstname = str(input("Firstname:\n"))
     lastname = str(input("Lastname:\n"))
