@@ -7,8 +7,16 @@ database = "contact_book"
 
 # add a person, with verfication
 def add_peron():
-    firstname = str(input("Firstname:\n"))
-    lastname = str(input("Lastname:\n"))
+    while True:
+        firstname = str(input("Firstname:\n"))
+        if check_name(firstname) == True:
+            break
+        print("The Name submitted was not valid!\nPlease try again:")
+    while True:
+        lastname = str(input("Lastname:\n"))
+        if check_name(lastname) == True:
+            break
+        print("The Name submitted was not valid!\nPlease try again:")
     while True:
         phone_number = str(input("Phone number:\n"))
         phone = phone_number
@@ -46,5 +54,4 @@ def add_peron():
                 add_peron()
 
 
-name = check_name("hello")
-print(name)
+add_peron()
