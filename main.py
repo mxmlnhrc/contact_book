@@ -1,7 +1,8 @@
-import os
-from Database import AddPerson, CreateDatabase, GetAllItems
+import os, sys
+from Database import AddPerson, CreateDatabase, GetAllItems, GetItem
 from security import check_name
 import phonenumbers
+import time
 
 database = "contact_book"
 
@@ -61,9 +62,14 @@ def get_all():
     os.system("cls")
 
 
+def get_item():
+    pass
+
+
 while True:
     user_in = input(
-        "What do you want to do?\n 1: Add a contact\n 2: Gett all contacts\n")
+        "What do you want to do?\n 1: Add a contact\n 2: Get all contacts\n 3: Get a contact based on your input\n"
+    )
 
     if user_in == '1':
         os.system("cls")
@@ -71,3 +77,17 @@ while True:
     elif user_in == '2':
         os.system("cls")
         get_all()
+    elif user_in == '3':
+        os.system("cls")
+        get_item()
+
+    elif user_in.lower() == 'exit':
+        print("Okay, Good Bye and see you soon!")
+        sys.exit(1)
+    else:
+        os.system("cls")
+        print("Please select a valid code.")
+        time.sleep(1)
+        os.system("cls")
+
+    os.system("cls")
