@@ -9,7 +9,7 @@ def create_table(cursor):
     table = []
 
     for dsatz in cursor:
-        table.append([dsatz])
+        table.append([dsatz[0], dsatz[1], dsatz[2]])
 
     print(table)
 
@@ -70,7 +70,7 @@ def GetAllItems(db="contact_book"):
     connection.close()
 
 
-def GetItem(db="contact_book", firstname="*", lastname="", phone=""):
+def GetItem(db="contact_book", firstname="Lol", lastname="", phone=""):
     db = db + ".db"
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
@@ -84,16 +84,7 @@ def GetItem(db="contact_book", firstname="*", lastname="", phone=""):
         phone,
     ))
 
-    table = []
-
-    for dsatz in cursor:
-        print(dsatz)
-        table.append([dsatz[0], dsatz[1], dsatz[2]])
-
-    print(
-        tabulate(table,
-                 headers=["Lastname", "Firstname", "Phonenumber"],
-                 tablefmt="pretty"))
+    create_table(cursor)
 
 
 GetItem()
