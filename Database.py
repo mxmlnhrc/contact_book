@@ -53,3 +53,15 @@ def GetAllItems(db="contact_book"):
 
     # close the connection
     connection.close()
+
+
+def GetItem(db="contact_book", firstname="firstname", lastname="*", phone="*"):
+    db = db + ".db"
+    connection = sqlite3.connect(db)
+    cursor = connection.cursor()
+
+    # sql = f"SELECT * FROM {db} WHERE firstname = {firstname} AND lastname = {lastname} AND phone = {phone};"
+    sql = "SELECT * FROM contacts ;"
+
+
+GetItem()
