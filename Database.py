@@ -32,6 +32,7 @@ def CreateDatabase(db="contact_book"):
 
 
 def AddPerson(firstname, lastname, phone, db="contact_book"):
+    categories = ["Lastname", "Firstname", "Phonenumber"]
     if not os.path.exists(db + ".db"):
         CreateDatabase(db)
 
@@ -43,6 +44,7 @@ def AddPerson(firstname, lastname, phone, db="contact_book"):
 
     cursor.execute(sql)
     connection.commit()
+
     print(f"{firstname} was sucessfully added to your conatct book.")
 
 
@@ -58,14 +60,14 @@ def GetAllItems(db="contact_book"):
     cursor.execute(sql)
 
     # return the results
-    for dsatz in cursor:
-        print(dsatz[0], dsatz[1], dsatz[2])
+    categories = ["Lastname", "Firstname", "Phonenumber"]
+    create_table(cursor=cursor, cats=categories)
 
     # close the connection
     connection.close()
 
 
-def GetItem(db="contact_book", firstname="Lol", lastname="", phone=""):
+def GetItem(db="contact_book", firstname="*", lastname="", phone=""):
     db = db + ".db"
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
@@ -78,8 +80,6 @@ def GetItem(db="contact_book", firstname="Lol", lastname="", phone=""):
         firstname,
         phone,
     ))
+
     categories = ["Lastname", "Firstname", "Phonenumber"]
-    create_table(cursor, categories)
-
-
-GetItem()
+    create_table(cursor=cursor, cats=categories)

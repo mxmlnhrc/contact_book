@@ -3,7 +3,6 @@ from Database import AddPerson, CreateDatabase, GetAllItems
 from security import check_name
 import phonenumbers
 
-
 database = "contact_book"
 
 
