@@ -2,6 +2,21 @@ import os
 from sqlite3.dbapi2 import Cursor
 import sys
 import sqlite3
+from tabulate import tabulate
+
+
+def create_table(cursor):
+    table = []
+
+    for dsatz in cursor:
+        table.append([dsatz])
+
+    print(table)
+
+    print(
+        tabulate(table,
+                 headers=["Lastname", "Firstname", "Phonenumber"],
+                 tablefmt="pretty"))
 
 
 def CreateDatabase(db="contact_book"):
@@ -55,7 +70,7 @@ def GetAllItems(db="contact_book"):
     connection.close()
 
 
-def GetItem(db="contact_book", firstname="", lastname="", phone=""):
+def GetItem(db="contact_book", firstname="*", lastname="", phone=""):
     db = db + ".db"
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
@@ -69,8 +84,16 @@ def GetItem(db="contact_book", firstname="", lastname="", phone=""):
         phone,
     ))
 
-    for item in cursor:
-        print(item)
+    table = []
+
+    for dsatz in cursor:
+        print(dsatz)
+        table.append([dsatz[0], dsatz[1], dsatz[2]])
+
+    print(
+        tabulate(table,
+                 headers=["Lastname", "Firstname", "Phonenumber"],
+                 tablefmt="pretty"))
 
 
 GetItem()
