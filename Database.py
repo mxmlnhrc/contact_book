@@ -5,18 +5,13 @@ import sqlite3
 from tabulate import tabulate
 
 
-def create_table(cursor):
+def create_table(cursor, cats):
     table = []
 
     for dsatz in cursor:
         table.append([dsatz[0], dsatz[1], dsatz[2]])
 
-    print(table)
-
-    print(
-        tabulate(table,
-                 headers=["Lastname", "Firstname", "Phonenumber"],
-                 tablefmt="pretty"))
+    print(tabulate(table, headers=cats, tablefmt="pretty"))
 
 
 def CreateDatabase(db="contact_book"):
@@ -83,8 +78,8 @@ def GetItem(db="contact_book", firstname="Lol", lastname="", phone=""):
         firstname,
         phone,
     ))
-
-    create_table(cursor)
+    categories = ["Lastname", "Firstname", "Phonenumber"]
+    create_table(cursor, categories)
 
 
 GetItem()
