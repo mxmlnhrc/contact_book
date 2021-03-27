@@ -74,6 +74,14 @@ def get_item():
                 GetItem(db=database, firstname=firstname)
                 user_in = input("Press any key to continue\n")
                 break
+    elif user_in.lower() == "lastname":
+        while True:
+            lastname = input("What is the lastname?\n")
+            if check_name(lastname) == True:
+                os.system("cls")
+                GetItem(db=database, lastname=lastname)
+                user_in = input("Press any key to continue\n")
+                break
 
 
 while True:
