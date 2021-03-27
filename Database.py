@@ -67,7 +67,7 @@ def GetAllItems(db="contact_book"):
     connection.close()
 
 
-def GetItem(db="contact_book", firstname="*", lastname="", phone=""):
+def GetItem(db="contact_book", firstname="", lastname="", phone=""):
     db = db + ".db"
     connection = sqlite3.connect(db)
     cursor = connection.cursor()

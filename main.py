@@ -1,5 +1,5 @@
 import os, sys
-from Database import AddPerson, CreateDatabase, GetAllItems, GetItem
+from Database import AddPerson, GetAllItems, GetItem
 from security import check_name
 import phonenumbers
 import time
@@ -63,12 +63,22 @@ def get_all():
 
 
 def get_item():
-    pass
+    user_in = input(
+        "what do you want to look after?\nFirstname, Lastname or Phonenumber\n"
+    )
+    if user_in.lower() == "firstname":
+        while True:
+            firstname = input("What is the firstname?\n")
+            if check_name(firstname) == True:
+                os.system("cls")
+                GetItem(db=database, firstname=firstname)
+                user_in = input("Press any key to continue\n")
+                break
 
 
 while True:
     user_in = input(
-        "What do you want to do?\n 1: Add a contact\n 2: Get all contacts\n 3: Get a contact based on your input\n"
+        "What do you want to do?\n 1: Add a contact\n 2: Get all contacts\n 3: Get a contacts based on your input\n"
     )
 
     if user_in == '1':
